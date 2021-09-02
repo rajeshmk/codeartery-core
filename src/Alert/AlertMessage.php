@@ -13,6 +13,11 @@ class AlertMessage
         $this->message = $this->formatMessage($message);
     }
 
+    public function is(string $type): bool
+    {
+        return $this->type === $type;
+    }
+
     public function toArray(): array
     {
         return [

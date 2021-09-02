@@ -30,6 +30,17 @@ class Alert
         return self::$alerts !== [];
     }
 
+    public static function has(string $type): bool
+    {
+        foreach (self::$alerts as $alert) {
+            if ($alert->is($type)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static function all(string $cast = 'array'): array
     {
         $bag = [];
