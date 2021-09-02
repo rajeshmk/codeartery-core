@@ -1,0 +1,14 @@
+{
+    "name": "codeartery/core",
+    "description": "CodeArtery Core Utilities",
+    "require": {
+        "php": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CodeArtery\\Core\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
