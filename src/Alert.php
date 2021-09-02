@@ -12,7 +12,7 @@ class Alert
     public static function __callStatic($name, $arguments): AlertMessage
     {
         if (! in_array($name, ['success', 'info', 'warning', 'danger'])) {
-            throw new Exception('Bad method call: `' . $name . '(...)`');
+            throw new Exception('Bad method call: ' . self::class . '::' . $name . '(...)');
         }
 
         return self::alert($name, ...$arguments);
@@ -23,6 +23,11 @@ class Alert
         self::$alerts[] = $alert = new AlertMessage($message, $type);
 
         return $alert;
+    }
+
+    public static function hasAlert(): bool
+    {
+        return self::$alerts !== [];
     }
 
     public static function all(string $cast = 'array'): array
