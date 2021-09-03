@@ -2,7 +2,7 @@
 
 namespace CodeArtery\Core\Pattern;
 
-use CodeArtery\Core\Exception\CodeArteryException;
+use CodeArtery\Core\Exception\ArteryException;
 
 /**
  * The Singleton class defines the `getInstance` method that serves as an
@@ -39,7 +39,7 @@ class Singleton
      */
     public function __wakeup()
     {
-        throw new CodeArteryException('Cannot unserialize a singleton.');
+        throw new ArteryException('Cannot unserialize a singleton.');
     }
 
     /**

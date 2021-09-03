@@ -2,7 +2,7 @@
 
 namespace CodeArtery\Core\Alert;
 
-use CodeArtery\Core\Exception\CodeArteryException;
+use CodeArtery\Core\Exception\ArteryException;
 use CodeArtery\Core\Support\Collection;
 
 class AlertCollection extends Collection
@@ -14,7 +14,7 @@ class AlertCollection extends Collection
             $bag[] = match($cast) {
                 'html', 'bootstrap' => $alert->bootstrap(),
                 'array', 'json' => $alert->toArray(),
-                default => throw new CodeArteryException('Casting to ' . $cast . ' is not permitted!'),
+                default => throw new ArteryException('Casting to ' . $cast . ' is not permitted!'),
             };
         }
 

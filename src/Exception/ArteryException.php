@@ -4,7 +4,7 @@ namespace CodeArtery\Core\Exception;
 
 use Exception;
 
-class CodeArteryException extends Exception
+class ArteryException extends Exception
 {
     //
 }

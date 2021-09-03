@@ -2,9 +2,9 @@
 
 namespace CodeArtery\Core;
 
-use AlertCollection;
+use CodeArtery\Core\Alert\AlertCollection;
 use CodeArtery\Core\Alert\AlertMessage;
-use CodeArtery\Core\Exception\CodeArteryException;
+use CodeArtery\Core\Exception\ArteryException;
 
 class Alert
 {
@@ -13,7 +13,7 @@ class Alert
     public static function __callStatic($name, $arguments): AlertMessage
     {
         if (! in_array($name, ['success', 'info', 'warning', 'error', 'exception'])) {
-            throw new CodeArteryException('Bad method call: ' . self::class . '::' . $name . '(...)');
+            throw new ArteryException('Bad method call: ' . self::class . '::' . $name . '(...)');
         }
 
         return self::alert($name, ...$arguments);
