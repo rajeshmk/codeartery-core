@@ -8,7 +8,7 @@ abstract class Collection implements ArrayAccess
 {
     abstract public function all(string $cast = 'array'): array;
 
-    public function __construct(private array $items = [])
+    public function __construct(protected array $items = [])
     {
         //
     }
