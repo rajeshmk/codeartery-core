@@ -28,7 +28,9 @@ class AlertMessage
 
     public function bootstrap(): string
     {
-        return '<div class="alert alert-dismissable alert-' . $this->type . '">'
+        $type = $this->type === 'error' ? 'danger' : $this->type;
+
+        return '<div class="alert alert-dismissable alert-' . $type . '">'
             . '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">'
             . '&times;'
             . '</button>'
