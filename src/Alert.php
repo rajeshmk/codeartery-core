@@ -11,7 +11,7 @@ class Alert
 
     public static function __callStatic($name, $arguments): AlertMessage
     {
-        if (! in_array($name, ['success', 'info', 'warning', 'error'])) {
+        if (! in_array($name, ['success', 'info', 'warning', 'error', 'exception'])) {
             throw new Exception('Bad method call: ' . self::class . '::' . $name . '(...)');
         }
 
