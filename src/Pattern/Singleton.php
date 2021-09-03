@@ -2,6 +2,8 @@
 
 namespace CodeArtery\Core\Pattern;
 
+use CodeArtery\Core\Exception\CodeArteryException;
+
 /**
  * The Singleton class defines the `getInstance` method that serves as an
  * alternative to constructor and lets clients access the same instance of this
@@ -37,7 +39,7 @@ class Singleton
      */
     public function __wakeup()
     {
-        throw new \Exception('Cannot unserialize a singleton.');
+        throw new CodeArteryException('Cannot unserialize a singleton.');
     }
 
     /**

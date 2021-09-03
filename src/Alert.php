@@ -2,8 +2,9 @@
 
 namespace CodeArtery\Core;
 
+use AlertCollection;
 use CodeArtery\Core\Alert\AlertMessage;
-use Exception;
+use CodeArtery\Core\Exception\CodeArteryException;
 
 class Alert
 {
@@ -12,7 +13,7 @@ class Alert
     public static function __callStatic($name, $arguments): AlertMessage
     {
         if (! in_array($name, ['success', 'info', 'warning', 'error', 'exception'])) {
-            throw new Exception('Bad method call: ' . self::class . '::' . $name . '(...)');
+            throw new CodeArteryException('Bad method call: ' . self::class . '::' . $name . '(...)');
         }
 
         return self::alert($name, ...$arguments);
@@ -41,17 +42,8 @@ class Alert
         return false;
     }
 
-    public static function all(string $cast = 'array'): array
+    public static function collection()
     {
-        $bag = [];
-        foreach (self::$alerts as $alert) {
-            $bag[] = match($cast) {
-                'html', 'bootstrap' => $alert->bootstrap(),
-                'array', 'json' => $alert->toArray(),
-                default => throw new Exception('Casting to ' . $cast . ' is not permitted!'),
-            };
-        }
-
-        return $bag;
+        return new AlertCollection(self::$alerts);
     }
 }
